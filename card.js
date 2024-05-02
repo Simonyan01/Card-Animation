@@ -22,6 +22,18 @@ class Card {
     this.element.style.left = `${x - this.width / 2}px`
     this.element.style.transform = `rotate(${this.body.angle}rad)`
   }
+
+  // THE BOX NAMES ARE STRAIGHT
+
+  // render() {
+  //   const { x, y } = this.body.position
+  //   const { velocity } = this.body
+  //   const angle = Math.atan(velocity.y, velocity.x)
+
+  //   this.element.style.top = `${y - this.height / 2}px`
+  //   this.element.style.left = `${x - this.width / 2}px`
+  //   this.element.style.transform = `rotate(${angle}rad)`
+  // }
 }
 
 const { Engine, Mouse, Bodies, Composite, Events, MouseConstraint } = Matter
@@ -98,7 +110,7 @@ Composite.add(engine.world, [ceiling, wallLeft, wallRight, ground, ...allCards.m
 Composite.add(engine.world, mouseConstraint)
 
 const limitMaxSpeed = () => {
-  let maxSpeed = 70
+  let maxSpeed = 60
 
   allCards.forEach(({ body }) => {
     body.velocity.x = Math.min(Math.max(body.velocity.x, -maxSpeed), maxSpeed)
